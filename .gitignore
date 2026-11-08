@@ -1,0 +1,8 @@
+/sjg
+/build/
+/output/
+__pycache__/
+*.o
+*.ind
+*.sjg
+ans-tbg.txt
