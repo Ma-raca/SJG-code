@@ -1,4 +1,4 @@
-# SJG: Skyline-based Joint Graph
+# SJG: Skyline Joint Graph
 
 A compact C++17 implementation of SJG for approximate nearest-neighbor search
 in multi-metric spaces. One graph serves queries with different nonnegative
@@ -8,9 +8,11 @@ SJG builds component-wise nearest-neighbor candidates using NN-Descent, merges
 forward and reverse neighbors, and selects a Skyline with rank-based minimum-degree
 completion. Queries use weighted-distance graph search with an `ef` search budget.
 
+[Experimental weights](docs/WEIGHTS.md) · [Data formats](docs/FORMAT.md) ·
+[Implementation notes](docs/IMPLEMENTATION.md)
+
 This repository contains the core implementation, a synthetic example and a
-small validation suite. Benchmark datasets, prebuilt indexes, baseline methods,
-experiment logs and paper drafts are not included.
+small validation suite.
 
 ## Build
 
@@ -74,13 +76,20 @@ thread when checking exact reproducibility.
 See [data and output formats](docs/FORMAT.md) and
 [implementation provenance](docs/IMPLEMENTATION.md).
 
+## Experimental query weights
+
+The [weight reference](docs/WEIGHTS.md) lists the component order and all seven
+query-weight profiles for each of the six benchmark datasets. Download the
+[full-precision CSV](docs/weights.csv) to reuse the exact experimental values.
+The same SJG graph serves all seven profiles.
+
 ## Repository layout
 
 ```text
 src/          construction, metrics, search, I/O and command-line entry
 examples/     synthetic example generator
-tests/       independent distance checks and end-to-end smoke test
-docs/        formats and implementation notes
+tests/        independent distance checks and end-to-end smoke test
+docs/         formats, experimental weights and implementation notes
 ```
 
 ## Implementation scope
@@ -90,10 +99,7 @@ which the retained research search implementation uses for triangle-inequality
 bounds. It also evaluates high-weight components first with early termination.
 These implementation details are documented separately from the graph-selection
 algorithm. `.ind` support is retained for reading the implementation's legacy
-index format; it does not bring in HJG or other baseline source trees.
-
-This is a core-code release, not a complete benchmark reproduction package.
-A paper citation can be added once its public bibliographic details are fixed.
+index format.
 
 ## License
 

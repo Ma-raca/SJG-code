@@ -1,0 +1,239 @@
+dataset,profile,component_index,component,weight
+corel,uniform,1,Color histogram (32D),1
+corel,uniform,2,Color layout histogram (32D),1
+corel,uniform,3,Color moments (9D),1
+corel,uniform,4,Co-occurrence texture (16D),1
+corel,dense_r0,1,Color histogram (32D),0.66761773959614756
+corel,dense_r0,2,Color layout histogram (32D),0.19906220025175847
+corel,dense_r0,3,Color moments (9D),0.099886647710373491
+corel,dense_r0,4,Co-occurrence texture (16D),0.033433412441720475
+corel,dense_r1,1,Color histogram (32D),0.10946087657386493
+corel,dense_r1,2,Color layout histogram (32D),0.061500762713003067
+corel,dense_r1,3,Color moments (9D),0.82443628252983259
+corel,dense_r1,4,Co-occurrence texture (16D),0.0046020781832994588
+corel,dense_r2,1,Color histogram (32D),0.040251363056445631
+corel,dense_r2,2,Color layout histogram (32D),0.26020921279384901
+corel,dense_r2,3,Color moments (9D),0.019965726904005356
+corel,dense_r2,4,Co-occurrence texture (16D),0.67957369724570016
+corel,skewed_r0,1,Color histogram (32D),0.19398490681068681
+corel,skewed_r0,2,Color layout histogram (32D),0.00016903822146745829
+corel,skewed_r0,3,Color moments (9D),0.52086651156377795
+corel,skewed_r0,4,Co-occurrence texture (16D),0.28497954340406778
+corel,skewed_r1,1,Color histogram (32D),0.051726315291143438
+corel,skewed_r1,2,Color layout histogram (32D),0.0023489392882893095
+corel,skewed_r1,3,Color moments (9D),0.88437289477904246
+corel,skewed_r1,4,Co-occurrence texture (16D),0.061551850641524707
+corel,skewed_r2,1,Color histogram (32D),0.15752427251189632
+corel,skewed_r2,2,Color layout histogram (32D),0.026660124561722266
+corel,skewed_r2,3,Color moments (9D),0.0001968807781847154
+corel,skewed_r2,4,Co-occurrence texture (16D),0.81561872214819664
+nuswide,uniform,1,Color histogram (64D),1
+nuswide,uniform,2,Color correlogram (144D),1
+nuswide,uniform,3,Edge direction histogram (73D),1
+nuswide,uniform,4,Wavelet texture (128D),1
+nuswide,uniform,5,Block-wise color moments (225D),1
+nuswide,dense_r0,1,Color histogram (64D),0.17191331078694155
+nuswide,dense_r0,2,Color correlogram (144D),0.28980815927045961
+nuswide,dense_r0,3,Edge direction histogram (73D),0.4274687604937385
+nuswide,dense_r0,4,Wavelet texture (128D),0.07287408385665857
+nuswide,dense_r0,5,Block-wise color moments (225D),0.037935685592201715
+nuswide,dense_r1,1,Color histogram (64D),0.334689196048642
+nuswide,dense_r1,2,Color correlogram (144D),0.31781456110397965
+nuswide,dense_r1,3,Edge direction histogram (73D),0.17517952335809767
+nuswide,dense_r1,4,Wavelet texture (128D),0.096072406943174968
+nuswide,dense_r1,5,Block-wise color moments (225D),0.076244312546105752
+nuswide,dense_r2,1,Color histogram (64D),0.189412750713532
+nuswide,dense_r2,2,Color correlogram (144D),0.036652352432112817
+nuswide,dense_r2,3,Edge direction histogram (73D),0.04186527901267887
+nuswide,dense_r2,4,Wavelet texture (128D),0.41424742049083685
+nuswide,dense_r2,5,Block-wise color moments (225D),0.31782219735083939
+nuswide,skewed_r0,1,Color histogram (64D),0.0058350821754764564
+nuswide,skewed_r0,2,Color correlogram (144D),0.0010952983170767294
+nuswide,skewed_r0,3,Edge direction histogram (73D),0.016217616010279816
+nuswide,skewed_r0,4,Wavelet texture (128D),0.013832563382636184
+nuswide,skewed_r0,5,Block-wise color moments (225D),0.96301944011453078
+nuswide,skewed_r1,1,Color histogram (64D),0.01160438676380901
+nuswide,skewed_r1,2,Color correlogram (144D),0.79545130134771247
+nuswide,skewed_r1,3,Edge direction histogram (73D),0.15648803608723943
+nuswide,skewed_r1,4,Wavelet texture (128D),0.0034643867254432583
+nuswide,skewed_r1,5,Block-wise color moments (225D),0.032991889075795873
+nuswide,skewed_r2,1,Color histogram (64D),0.08791234785635943
+nuswide,skewed_r2,2,Color correlogram (144D),0.30100060689328501
+nuswide,skewed_r2,3,Edge direction histogram (73D),0.16289428953788448
+nuswide,skewed_r2,4,Wavelet texture (128D),0.14064599270124298
+nuswide,skewed_r2,5,Block-wise color moments (225D),0.30754676301122807
+imagenet,uniform,1,HSV histogram (256D),1
+imagenet,uniform,2,HSV color moments (9D),1
+imagenet,uniform,3,Gabor (32D),1
+imagenet,uniform,4,HOG (324D),1
+imagenet,uniform,5,ResNet-50 (2048D),1
+imagenet,dense_r0,1,HSV histogram (256D),0.57034790613521513
+imagenet,dense_r0,2,HSV color moments (9D),0.089769994711660764
+imagenet,dense_r0,3,Gabor (32D),0.073432680351603774
+imagenet,dense_r0,4,HOG (324D),0.1496579157838975
+imagenet,dense_r0,5,ResNet-50 (2048D),0.11679150301762285
+imagenet,dense_r1,1,HSV histogram (256D),0.092870294002002113
+imagenet,dense_r1,2,HSV color moments (9D),0.35196261150608721
+imagenet,dense_r1,3,Gabor (32D),0.19526596380208411
+imagenet,dense_r1,4,HOG (324D),0.19346573147388638
+imagenet,dense_r1,5,ResNet-50 (2048D),0.16643539921594017
+imagenet,dense_r2,1,HSV histogram (256D),0.13903678853617771
+imagenet,dense_r2,2,HSV color moments (9D),0.15667855568905659
+imagenet,dense_r2,3,Gabor (32D),0.20396278435139029
+imagenet,dense_r2,4,HOG (324D),0.24329879452006703
+imagenet,dense_r2,5,ResNet-50 (2048D),0.25702307690330839
+imagenet,skewed_r0,1,HSV histogram (256D),0.0013545503359505215
+imagenet,skewed_r0,2,HSV color moments (9D),1.0683011452859531e-06
+imagenet,skewed_r0,3,Gabor (32D),0.13692619777651993
+imagenet,skewed_r0,4,HOG (324D),0.84570905991212364
+imagenet,skewed_r0,5,ResNet-50 (2048D),0.016009123674260599
+imagenet,skewed_r1,1,HSV histogram (256D),0.066031296110035456
+imagenet,skewed_r1,2,HSV color moments (9D),1.2785808007036529e-05
+imagenet,skewed_r1,3,Gabor (32D),0.93323608210981324
+imagenet,skewed_r1,4,HOG (324D),0.00058118566354867934
+imagenet,skewed_r1,5,ResNet-50 (2048D),0.00013865030859560904
+imagenet,skewed_r2,1,HSV histogram (256D),0.019136739572374654
+imagenet,skewed_r2,2,HSV color moments (9D),0.94255731080403304
+imagenet,skewed_r2,3,Gabor (32D),0.034120273950929161
+imagenet,skewed_r2,4,HOG (324D),9.2203478454468534e-05
+imagenet,skewed_r2,5,ResNet-50 (2048D),0.004093472194208682
+coco,uniform,1,HSV histogram,1
+coco,uniform,2,Block-wise color moments,1
+coco,uniform,3,LBP,1
+coco,uniform,4,Edge direction histogram,1
+coco,uniform,5,CLIP image,1
+coco,uniform,6,ResNet-50 image,1
+coco,uniform,7,MPNet text,1
+coco,uniform,8,CLIP text,1
+coco,dense_r0,1,HSV histogram,0.18218730095351551
+coco,dense_r0,2,Block-wise color moments,0.18270149895834292
+coco,dense_r0,3,LBP,0.063880761399012456
+coco,dense_r0,4,Edge direction histogram,0.056808437548598129
+coco,dense_r0,5,CLIP image,0.20960298773063032
+coco,dense_r0,6,ResNet-50 image,0.035280627479187802
+coco,dense_r0,7,MPNet text,0.05763781691675484
+coco,dense_r0,8,CLIP text,0.21190056901395787
+coco,dense_r1,1,HSV histogram,0.27680732228522786
+coco,dense_r1,2,Block-wise color moments,0.051076385311343744
+coco,dense_r1,3,LBP,0.041106212749612354
+coco,dense_r1,4,Edge direction histogram,0.11520929749175031
+coco,dense_r1,5,CLIP image,0.0062046234451835283
+coco,dense_r1,6,ResNet-50 image,0.077282204885768244
+coco,dense_r1,7,MPNet text,0.085660376023336607
+coco,dense_r1,8,CLIP text,0.34665357780777734
+coco,dense_r2,1,HSV histogram,0.13742716850691897
+coco,dense_r2,2,Block-wise color moments,0.096799929299186988
+coco,dense_r2,3,LBP,0.014780115159425043
+coco,dense_r2,4,Edge direction histogram,0.14762559179438967
+coco,dense_r2,5,CLIP image,0.17427909526130392
+coco,dense_r2,6,ResNet-50 image,0.060411339165851813
+coco,dense_r2,7,MPNet text,0.11589084600455168
+coco,dense_r2,8,CLIP text,0.25278591480837193
+coco,skewed_r0,1,HSV histogram,0.18497682390068618
+coco,skewed_r0,2,Block-wise color moments,2.1083665873637052e-08
+coco,skewed_r0,3,LBP,0.15279662479516251
+coco,skewed_r0,4,Edge direction histogram,0.073935077581787911
+coco,skewed_r0,5,CLIP image,0.16856157088337784
+coco,skewed_r0,6,ResNet-50 image,0.0145150190296669
+coco,skewed_r0,7,MPNet text,0.086355175400025103
+coco,skewed_r0,8,CLIP text,0.31885968732562769
+coco,skewed_r1,1,HSV histogram,0.0024729825040821036
+coco,skewed_r1,2,Block-wise color moments,0.13285585535605535
+coco,skewed_r1,3,LBP,0.0059183339094501537
+coco,skewed_r1,4,Edge direction histogram,0.26660267863447173
+coco,skewed_r1,5,CLIP image,0.21342533286784454
+coco,skewed_r1,6,ResNet-50 image,0.30791398846794565
+coco,skewed_r1,7,MPNet text,0.056359509255932673
+coco,skewed_r1,8,CLIP text,0.01445131900421783
+coco,skewed_r2,1,HSV histogram,0.0060482690964614675
+coco,skewed_r2,2,Block-wise color moments,0.0094269430177094764
+coco,skewed_r2,3,LBP,0.83100527571230887
+coco,skewed_r2,4,Edge direction histogram,0.033032370940634187
+coco,skewed_r2,5,CLIP image,2.0350855411068538e-06
+coco,skewed_r2,6,ResNet-50 image,0.11757466811136735
+coco,skewed_r2,7,MPNet text,0.0016756876712914191
+coco,skewed_r2,8,CLIP text,0.0012347503646861259
+foodhetero,uniform,1,Energy,1
+foodhetero,uniform,2,Fat,1
+foodhetero,uniform,3,Sugar,1
+foodhetero,uniform,4,Salt,1
+foodhetero,uniform,5,Protein,1
+foodhetero,uniform,6,Food category,1
+foodhetero,uniform,7,Product-name embedding,1
+foodhetero,dense_r0,1,Energy,0.54357514451708977
+foodhetero,dense_r0,2,Fat,0.020946187294474686
+foodhetero,dense_r0,3,Sugar,0.046323469044373511
+foodhetero,dense_r0,4,Salt,0.13012862281928692
+foodhetero,dense_r0,5,Protein,0.064264673309966269
+foodhetero,dense_r0,6,Food category,0.0091998547110094427
+foodhetero,dense_r0,7,Product-name embedding,0.18556204830379935
+foodhetero,dense_r1,1,Energy,0.058865913267772643
+foodhetero,dense_r1,2,Fat,0.1063800835548554
+foodhetero,dense_r1,3,Sugar,0.21274080174900986
+foodhetero,dense_r1,4,Salt,0.14019017717039386
+foodhetero,dense_r1,5,Protein,0.2922990587945844
+foodhetero,dense_r1,6,Food category,0.017691280102699131
+foodhetero,dense_r1,7,Product-name embedding,0.17183268536068455
+foodhetero,dense_r2,1,Energy,0.19410621817583479
+foodhetero,dense_r2,2,Fat,0.10526881631798715
+foodhetero,dense_r2,3,Sugar,0.12399578536813144
+foodhetero,dense_r2,4,Salt,0.16816903143740489
+foodhetero,dense_r2,5,Protein,0.22813605210668708
+foodhetero,dense_r2,6,Food category,0.081913513445766792
+foodhetero,dense_r2,7,Product-name embedding,0.098410583148187805
+foodhetero,skewed_r0,1,Energy,0.022081418828856336
+foodhetero,skewed_r0,2,Fat,0.87704166514229343
+foodhetero,skewed_r0,3,Sugar,0.0078451006088021934
+foodhetero,skewed_r0,4,Salt,0.086476682275107727
+foodhetero,skewed_r0,5,Protein,2.4083518067156871e-07
+foodhetero,skewed_r0,6,Food category,5.1820550813198067e-05
+foodhetero,skewed_r0,7,Product-name embedding,0.0065030717589464812
+foodhetero,skewed_r1,1,Energy,0.094807942229713588
+foodhetero,skewed_r1,2,Fat,3.4612549493086056e-06
+foodhetero,skewed_r1,3,Sugar,0.18656776280263648
+foodhetero,skewed_r1,4,Salt,0.011842651522007388
+foodhetero,skewed_r1,5,Protein,0.70660049319175589
+foodhetero,skewed_r1,6,Food category,0.00017717830801445618
+foodhetero,skewed_r1,7,Product-name embedding,5.106909230636929e-07
+foodhetero,skewed_r2,1,Energy,0.00028199922874830812
+foodhetero,skewed_r2,2,Fat,1.5350188896574798e-05
+foodhetero,skewed_r2,3,Sugar,0.53854733143830358
+foodhetero,skewed_r2,4,Salt,0.24405239510347465
+foodhetero,skewed_r2,5,Protein,4.7768927463597242e-05
+foodhetero,skewed_r2,6,Food category,0.21703307611457456
+foodhetero,skewed_r2,7,Product-name embedding,2.2078998538711858e-05
+rental1m,uniform,1,Latitude/longitude,1
+rental1m,uniform,2,Listing name,1
+rental1m,uniform,3,Price,1
+rental1m,uniform,4,Guest capacity,1
+rental1m,uniform,5,Amenities,1
+rental1m,dense_r0,1,Latitude/longitude,0.050336827237028668
+rental1m,dense_r0,2,Listing name,0.31373167239488275
+rental1m,dense_r0,3,Price,0.36715661794799287
+rental1m,dense_r0,4,Guest capacity,0.13785601976462442
+rental1m,dense_r0,5,Amenities,0.13091886265547142
+rental1m,dense_r1,1,Latitude/longitude,0.19830443066360665
+rental1m,dense_r1,2,Listing name,0.024502687639366329
+rental1m,dense_r1,3,Price,0.57933403761850832
+rental1m,dense_r1,4,Guest capacity,0.19779269043587985
+rental1m,dense_r1,5,Amenities,6.615364263890539e-05
+rental1m,dense_r2,1,Latitude/longitude,0.35388940155155779
+rental1m,dense_r2,2,Listing name,0.14940484250703676
+rental1m,dense_r2,3,Price,0.29964138865782364
+rental1m,dense_r2,4,Guest capacity,0.081132208292442748
+rental1m,dense_r2,5,Amenities,0.11593215899113907
+rental1m,skewed_r0,1,Latitude/longitude,0.16612579346583892
+rental1m,skewed_r0,2,Listing name,0.011419890784744471
+rental1m,skewed_r0,3,Price,0.82176353670402924
+rental1m,skewed_r0,4,Guest capacity,7.7946687757171328e-07
+rental1m,skewed_r0,5,Amenities,0.00068999957850973822
+rental1m,skewed_r1,1,Latitude/longitude,9.7745925516665402e-05
+rental1m,skewed_r1,2,Listing name,0.00027439972456190964
+rental1m,skewed_r1,3,Price,0.003425455102703155
+rental1m,skewed_r1,4,Guest capacity,0.83031166324337857
+rental1m,skewed_r1,5,Amenities,0.16589073600383963
+rental1m,skewed_r2,1,Latitude/longitude,0.61385816380544278
+rental1m,skewed_r2,2,Listing name,0.34595193014565589
+rental1m,skewed_r2,3,Price,4.4611236201511948e-11
+rental1m,skewed_r2,4,Guest capacity,0.0040535556258171537
+rental1m,skewed_r2,5,Amenities,0.036136350378472813
