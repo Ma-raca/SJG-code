@@ -107,7 +107,7 @@ The experimental baselines use the following upstream implementations:
 
 | Baseline | Upstream repository |
 |---|---|
-| C-HNSW and uniform-weight HNSW | [nmslib/hnswlib](https://github.com/nmslib/hnswlib) |
+| C-HNSW | [nmslib/hnswlib](https://github.com/nmslib/hnswlib) |
 | C-NSG | [ZJULearning/nsg](https://github.com/ZJULearning/nsg) |
 | C-Vamana | [cmuparlay/ParlayANN](https://github.com/cmuparlay/ParlayANN) |
 | HJG | [ZJU-DAILY/HJG](https://github.com/ZJU-DAILY/HJG) |
