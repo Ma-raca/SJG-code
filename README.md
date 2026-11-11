@@ -64,6 +64,7 @@ are included.
 | `SKY_FLOOR` | 16 | Minimum-degree target, limited by available candidates |
 | `EF` | 128 | Search candidate/result budget; raised to k if necessary |
 | `EF_LIST` | unset | Comma-separated budgets evaluated in one process |
+| `SJG_EDGE_BOUNDS` | 0 (off) | Set to `1` to enable triangle-inequality edge filtering in EF search |
 | `OUT` | `ans-tbg.txt` | Answer file; `EF_LIST` appends `.<ef>` |
 | `OUT_DIST` | unset | Include individual returned distances |
 | `EXTERNAL_QUERY_DATA` | unset | Separate query-object payload file |
@@ -94,9 +95,12 @@ docs/         formats, experimental weights and implementation notes
 
 ## Implementation scope
 
-The native `.sjg` representation includes component distances on graph edges,
-which the retained research search implementation uses for triangle-inequality
-bounds. It also evaluates high-weight components first with early termination.
+Triangle-inequality edge filtering is **disabled by default** in EF search.
+Set `SJG_EDGE_BOUNDS=1` to enable it; unset the variable or set it to `0` to
+disable it. High-weight components are still evaluated first, with early
+termination when the accumulated distance cannot improve the candidate set.
+The native `.sjg` representation continues to store component distances on graph
+edges for the optional filter, so this setting does not change index size.
 These implementation details are documented separately from the graph-selection
 algorithm. `.ind` support is retained for reading the implementation's legacy
 index format.

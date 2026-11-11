@@ -10,12 +10,15 @@
 #include <queue>
 #include <cmath>
 #include <cstring>
+#include <cstdlib>
 
 using std::pair;
 using std::vector;
 
 void Engine::init(const Dataset& d, const Graph& g) {
     D = &d; G = &g;
+    const char* flag = std::getenv("SJG_EDGE_BOUNDS");
+    edge_bounds = flag && std::strcmp(flag, "1") == 0;
     bound.assign((size_t)d.n * d.m, -1.0f);
     ndist.assign(d.n, 0.0f);
     vis.assign(d.n, 0);
@@ -163,10 +166,10 @@ Result brute(const Dataset& D, int qi, const vector<double>& w, int k) {
     return R;   // 降序(与老实现一致)
 }
 
-// EF(beam/retset)模式 — 经典 hnswlib 搜索语义 + native 全维下界筛(相对经典 beam 无损, 省真距离):
+// EF(beam/retset)模式 — bounded beam with opt-in edge bounds (SJG_EDGE_BOUNDS=1):
 //  - result = 容量 ef 的最大堆(真 distW); cand = 最小堆; 终止: cand 最小 > result 最差
 //  - 淘汰哲学是"名额"(算法近似, ef 是准度旋钮), 与 EPSI 的"距离证据"不同 -> 前沿由实验判
-//  - 发现邻居时先用 native 全维元组算加权下界 wb: wb >= 第ef名 => 真距离也进不了名单, 直接跳过
+//  - When enabled, native edge distances give a weighted lower bound; skip if wb >= worst.
 //    (真距离 >= 下界, 与经典 beam 结果一致但省计算); 真 distW 计算带 tau=第ef名 的惰性早停
 //  - visited 于发现时标记(经典语义: 被名额拒绝的节点永不复活)
 Result Engine::search_ef(int qi, const vector<double>& w, int knn, int ef) {
@@ -207,11 +210,13 @@ Result Engine::search_ef(int qi, const vector<double>& w, int knn, int ef) {
             int nb = G.nnbr[e];
             if (vis[nb]) continue;
             vis[nb] = 1; touched.push_back(nb);
-            const float* dv = &G.edvec[(size_t)e * m];
             double worst = ((int)result.size() >= ef) ? result.top().first : 1e300;
-            double wb = 0;                                                 // 全维加权下界(免费, 来自元组+u的真距离行)
-            for (int t = 0; t < nact; t++) { int j2 = act[t]; float diff = dv[j2] - bound[n1 + j2]; wb += w[j2] * (diff < 0 ? -diff : diff); }
-            if (wb >= worst) continue;                                     // 下界证明进不了名单(无损筛)
+            if (edge_bounds) {
+                const float* dv = &G.edvec[(size_t)e * m];
+                double wb = 0;
+                for (int t = 0; t < nact; t++) { int j2 = act[t]; float diff = dv[j2] - bound[n1 + j2]; wb += w[j2] * (diff < 0 ? -diff : diff); }
+                if (wb >= worst) continue;
+            }
             size_t r = (size_t)nb * m;
             double dsum = 0; bool ab = false;
             if (!reordered) {

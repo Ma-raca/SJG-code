@@ -32,6 +32,7 @@ static void usage() {
         "  sjg brute  <database.txt> <queries.txt>\n"
         "Options (environment): HJG_THREADS=12, SJG_INDEX_K=15, SKY_FLOOR=16,\n"
         "  EF=128 or EF_LIST=16,32,64,128, OUT=answers.txt, OUT_DIST=1,\n"
+        "  SJG_EDGE_BOUNDS=1 enables EF triangle-inequality filtering (default: off),\n"
         "  EXTERNAL_QUERY_DATA=query_objects.txt. See docs/FORMAT.md.\n");
 }
 

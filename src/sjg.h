@@ -73,12 +73,13 @@ struct Result { std::vector<int> ids; std::vector<double> dists; };
 struct Engine {                     // 可复用 scratch(跨查询"温热"语义与老实现一致)
     const Dataset* D = nullptr;
     const Graph*   G = nullptr;
+    bool edge_bounds = false;     // EF triangle-inequality filter; explicit opt-in
     std::vector<float>   bound;     // [n*m] TI 下界, init -1
     std::vector<float>   ndist;     // [n]
     std::vector<uint8_t> vis;       // [n]
     void init(const Dataset& d, const Graph& g);
     Result search(int q, const std::vector<double>& w, int k, const SearchOpt& o);
-    Result search_ef(int q, const std::vector<double>& w, int k, int ef);   // 有界beam(经典ef语义, native图: 发现即全维下界筛)
+    Result search_ef(int q, const std::vector<double>& w, int k, int ef);   // Bounded beam; optional per-edge distance bounds
 };
 Result brute(const Dataset& D, int q, const std::vector<double>& w, int k);
 
