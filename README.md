@@ -111,14 +111,12 @@ The experimental baselines use the following upstream implementations:
 | C-NSG | [ZJULearning/nsg](https://github.com/ZJULearning/nsg) |
 | C-Vamana | [cmuparlay/ParlayANN](https://github.com/cmuparlay/ParlayANN) |
 | HJG | [ZJU-DAILY/HJG](https://github.com/ZJU-DAILY/HJG) |
-| DEG | [Heisenberg-Yin/DEG](https://github.com/Heisenberg-Yin/DEG) |
 
 The C- prefix denotes our composition of per-component indexes, with candidate
 merging and weighted-distance reranking. These composition wrappers and
 multi-metric adapters are part of our experimental code, rather than features
 provided directly by the upstream repositories. C-Vamana uses the ParlayANN
-implementation of Vamana. Our multi-component DEG extension is a separate
-experimental adaptation of the original two-component method.
+implementation of Vamana.
 
 Baseline implementations and experiment adapters are not bundled in this
 SJG core repository. Each upstream project retains its own license.
