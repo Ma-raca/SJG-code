@@ -4,7 +4,7 @@
 
 The six datasets use seven fixed query-weight profiles: one uniform profile,
 three dense profiles, and three skewed profiles. The same SJG graph is reused
-across profiles; SJG construction does not use these query weights.
+across profiles; SJG construction is independent of query weights.
 
 ## Profiles
 
@@ -14,10 +14,10 @@ across profiles; SJG construction does not use these query weights.
 | `dense_r0`–`dense_r2` | Three fixed draws from a symmetric Dirichlet distribution with concentration 1 |
 | `skewed_r0`–`skewed_r2` | Three fixed draws with concentration 0.2 |
 
-The nonuniform vectors sum to one. Uniform weights are reproduced as recorded,
-rather than rescaled to sum to one. The weighted distance is
+The nonuniform vectors sum to one; the uniform vectors contain all ones,
+matching the recorded experiment protocol. The weighted distance is
 `sum_i weight_i * raw_distance_i / scale_i`; scales belong to the dataset metadata.
-The `r0`–`r2` suffixes identify weight profiles, not timing repetitions.
+The `r0`–`r2` suffixes identify the three draws in each nonuniform profile family.
 
 Tables display six significant digits for readability. **Use the CSV values for
 reproduction**, especially for very small nonzero weights. The CSV uses one row

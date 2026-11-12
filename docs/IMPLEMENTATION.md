@@ -1,39 +1,44 @@
-# Implementation and provenance
+# Implementation notes
 
-The six C++ source/header files are extracted from the maintained SJG research
-implementation. Construction and distance kernels are retained. The EF search
-retains the research traversal, with triangle-inequality edge filtering made
-opt-in through `SJG_EDGE_BOUNDS=1` (disabled by default).
+The six C++ source/header files come from the SJG research implementation.
+This repository provides the construction and search code, a command-line
+interface, a synthetic example and validation tests.
 
-The release adds an external-query adapter already used by the independent-query
-experiments. Query payloads are appended to the distance-access storage after
-loading/reordering the graph. Database cardinality and graph membership stay
-unchanged, so external queries cannot become returned neighbors.
+## Construction
 
-Release-specific CLI defaults enable Skyline selection, minimum degree 16,
-one construction thread and EF 128. English CLI help, Make targets, format
-documentation, a synthetic generator and tests are added. Internal environment
-variable names are preserved to keep experiment commands recognizable.
+SJG generates nearest-neighbor candidates with per-component NN-Descent,
+unites forward and reverse candidates, and selects neighbors using
+component-distance dominance. Rank-sum completion adds candidates to reach
+the minimum-degree target. The score sums each candidate's component-wise ranks.
 
-Construction uses per-component NN-Descent, the union of forward/reverse
-candidates, component-distance dominance, and rank-sum minimum-degree completion.
-The rank score uses component-wise ranks rather than a fixed weighted distance.
+The command-line defaults enable Skyline selection, a minimum-degree target
+of 16, one construction thread and EF 128. The parameter table in the
+[README](../README.md#main-parameters) lists the available controls.
 
-The native index stores per-edge component distances. EF search uses these
-distances for triangle-inequality filtering only when `SJG_EDGE_BOUNDS=1`.
-The default skips this filtering. Weight-ordered component evaluation and
-early termination of accumulated distances remain enabled in either mode.
-The switch changes query behavior, not the serialized index layout or size.
+## Search
 
-Some compatibility utilities remain in the same core files (legacy index import
-and the older EPSI search path, whose bound propagation is unchanged by the
-EF-only switch). No baseline implementation, third-party source
-tree, private dataset, generated index, experiment result or paper source is
-included. Construction follows the NN-Descent candidate-generation approach;
-legacy distance and file conventions were maintained for comparisons with the
-research implementation of HJG. Algorithm names in comments document provenance,
-not additional bundled baseline libraries.
+EF search traverses the joint graph using the query's weighted distance.
+It evaluates high-weight components first and stops distance evaluation
+when the accumulated value exceeds the candidate threshold.
 
-`make test` exercises the full pipeline with external queries, mixed L1/L2/edit/
-Jaccard components, zero component weights, nonuniform weights and an independent
-Python distance oracle. It is a correctness smoke test, not a performance result.
+`SJG_EDGE_BOUNDS` defaults to `0`. Set it to `1` to enable triangle-inequality
+edge filtering in EF search. The native `.sjg` format stores component distances
+on every edge for this filter. Index storage is the same for both settings.
+
+## External queries and formats
+
+After loading and reordering the graph, the external-query adapter appends
+query payloads to the distance-access storage. Graph vertices and result IDs
+refer to database objects; external queries use the separate payload range.
+
+The implementation supports native `.sjg` indexes, legacy `.ind` indexes and
+the earlier EPSI search path. `SJG_EDGE_BOUNDS` controls EF search;
+EPSI uses its own bound propagation. Distance and file conventions follow
+the research implementation of HJG. Construction uses the NN-Descent
+candidate-generation approach.
+
+## Validation
+
+`make test` checks the full pipeline against an independent Python distance
+oracle. Cases cover external queries, mixed L1/L2/edit/Jaccard components,
+zero and nonuniform weights, and triangle-inequality filtering with both settings.

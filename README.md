@@ -17,8 +17,7 @@ small validation suite.
 ## Build
 
 Requirements: Linux, a C++17 compiler with OpenMP (tested with GCC), and Make.
-Python 3.8+ is used only for the example generator and tests; no Python packages
-are required.
+The example generator and tests use Python 3.8+ and its standard library.
 
 ```bash
 make -j2
@@ -29,7 +28,7 @@ make test
 
 The example has four components: a vector with L2 distance, a scalar with L1
 distance, a string with edit distance, and a token set with Jaccard distance.
-Query objects are generated separately and are not inserted into the graph.
+The generator creates separate database and query objects.
 
 ```bash
 python3 examples/generate.py --output output/example
@@ -48,15 +47,15 @@ EXTERNAL_QUERY_DATA=output/example/query_objects.txt \
 ```
 
 Change the first line of `queries.txt` to change the weights; reuse the same graph.
-`brute` scans only database objects, even when external query payloads are loaded.
-Without `EXTERNAL_QUERY_DATA`, query IDs refer to database objects and self-matches
-are included.
+`brute` computes exact neighbors by scanning the database. With
+`EXTERNAL_QUERY_DATA`, query IDs refer to the separate query file. Otherwise,
+they refer to database objects, including self-matches.
 
 ## Main parameters
 
 | Variable | Default | Meaning |
 |---|---:|---|
-| `HJG_THREADS` | 1 | Build threads; the historical variable name is retained |
+| `HJG_THREADS` | 1 | Build threads |
 | `SJG_INDEX_K` | 15 | Per-component target neighbor count |
 | `ND_K` | K + 1 | NN-Descent candidate-pool size |
 | `ND_EMIT` | K | Neighbors emitted per component |
@@ -64,7 +63,7 @@ are included.
 | `SKY_FLOOR` | 16 | Minimum-degree target, limited by available candidates |
 | `EF` | 128 | Search candidate/result budget; raised to k if necessary |
 | `EF_LIST` | unset | Comma-separated budgets evaluated in one process |
-| `SJG_EDGE_BOUNDS` | 0 (off) | Set to `1` to enable triangle-inequality edge filtering in EF search |
+| `SJG_EDGE_BOUNDS` | 0 | Set to `1` to enable triangle-inequality edge filtering in EF search |
 | `OUT` | `ans-tbg.txt` | Answer file; `EF_LIST` appends `.<ef>` |
 | `OUT_DIST` | unset | Include individual returned distances |
 | `EXTERNAL_QUERY_DATA` | unset | Separate query-object payload file |
@@ -75,7 +74,7 @@ thread scheduling can still affect parallel build execution. Use one build
 thread when checking exact reproducibility.
 
 See [data and output formats](docs/FORMAT.md) and
-[implementation provenance](docs/IMPLEMENTATION.md).
+[implementation notes](docs/IMPLEMENTATION.md).
 
 ## Experimental query weights
 
@@ -93,17 +92,12 @@ tests/        independent distance checks and end-to-end smoke test
 docs/         formats, experimental weights and implementation notes
 ```
 
-## Implementation scope
+## Search options
 
-Triangle-inequality edge filtering is **disabled by default** in EF search.
-Set `SJG_EDGE_BOUNDS=1` to enable it; unset the variable or set it to `0` to
-disable it. High-weight components are still evaluated first, with early
-termination when the accumulated distance cannot improve the candidate set.
-The native `.sjg` representation continues to store component distances on graph
-edges for the optional filter, so this setting does not change index size.
-These implementation details are documented separately from the graph-selection
-algorithm. `.ind` support is retained for reading the implementation's legacy
-index format.
+EF search evaluates high-weight components first and stops distance evaluation
+when the accumulated value exceeds the candidate threshold.
+Set `SJG_EDGE_BOUNDS=1` to additionally filter edges using triangle-inequality
+bounds. The filter uses component distances stored in the `.sjg` index.
 
 ## Baseline source repositories
 
@@ -117,13 +111,10 @@ The experimental baselines use the following upstream implementations:
 | HJG | [ZJU-DAILY/HJG](https://github.com/ZJU-DAILY/HJG) |
 
 The C- prefix denotes our composition of per-component indexes, with candidate
-merging and weighted-distance reranking. These composition wrappers and
-multi-metric adapters are part of our experimental code, rather than features
-provided directly by the upstream repositories. C-Vamana uses the ParlayANN
-implementation of Vamana.
-
-Baseline implementations and experiment adapters are not bundled in this
-SJG core repository. Each upstream project retains its own license.
+merging and weighted-distance reranking. Our experimental code provides the
+composition wrappers and multi-metric adapters. C-Vamana uses the ParlayANN
+implementation of Vamana. Baseline source code is available from the repositories
+above under their respective licenses.
 
 ## License
 

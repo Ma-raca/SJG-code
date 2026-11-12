@@ -22,7 +22,7 @@ string or set fields.
 | Type | Representation | Distance |
 |---|---|---|
 | 1 | Scalar or comma-separated vector | L1 |
-| 2 | Comma-separated vector | Euclidean L2, not squared L2 |
+| 2 | Comma-separated vector | Euclidean L2 |
 | 5 | Nonzero comma-separated vector | Angular distance in degrees |
 | 6 | Nonempty UTF-8 byte string without whitespace | Byte-wise Levenshtein edit distance |
 | 7 | `token_a|token_b|token_c` | Jaccard distance on token sets |
@@ -30,8 +30,8 @@ string or set fields.
 The example generator uses types 2, 1, 6 and 7. Type 5 uses the historical
 `acos(cosine) * 180 / 3.1415926` convention; choose the scale in the same units.
 Legacy aliases 0 and 4 follow L1; type 3 is the historical date/time encoding.
-They are not needed for the example. To add a distance, extend `dist` in
-`src/metric.cpp` and provide its corresponding input representation.
+To add a distance, extend `dist` in `src/metric.cpp` and provide its corresponding
+input representation.
 
 ## Query protocol
 
@@ -82,7 +82,7 @@ dc <mean_component_distance_evaluations>
 ```
 
 The exact-scan routine may emit neighbors in descending distance order; compare
-sets or sort by distance rather than assuming the same order as graph search.
+result sets or sort the outputs by distance.
 Ties at rank k can produce different valid result sets.
 
 ## Indexes
